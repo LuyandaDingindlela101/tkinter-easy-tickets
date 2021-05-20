@@ -22,7 +22,7 @@ class TicketSales:
 
         self.ticket_category = Label(window, text="Select ticket category")
         self.ticket_category.place(x=10, y=50)
-        self.category_combobox = Combobox(window, value=["Soccer", "Movie", "Theatre"])
+        self.category_combobox = Combobox(window, value=["Soccer", "Movie", "Theatre"], state="readonly")
         self.category_combobox.place(x=200, y=50)
 
         self.ticket_amount_label = Label(window, text="Number of tickets bought")
@@ -55,8 +55,8 @@ class TicketSales:
             #   THIS IS ONLY TRIGGERED IF THE ticket_category IS EMPTY OR THE STRING INSIDE DOESNT MATCH THE OPTIONS
             messagebox.showinfo(message="You have chosen an invalid category, please clear entries and try again.")
 
-        #   WE CHECK IF THE ticket_price EXISTS, SO WE DONT CONTINUE WITH THE CALCULATION IF IT DOSN'T
-        if ticket_price:
+        #   WE CHECK IF THE ticket_price EXISTS, SO WE DON'T CONTINUE WITH THE CALCULATION IF IT DOESN'T
+        if ticket_price > 0:
             #   HERE, WE CALCULATE THE amount_payable BEFORE VAT
             amount_payable = float(ticket_amount) * ticket_price
             #   NOW, WE CALCULATE THE VALUE OF THE VAT
