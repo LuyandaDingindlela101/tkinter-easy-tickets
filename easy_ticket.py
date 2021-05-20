@@ -14,8 +14,8 @@ class TicketSales:
 
     def __init__(self, window):
         #   CREATE ALL THE NECESSARY WIDGETS
-        self.sickness_code_label = Label(window, text="Enter cellphone number")
-        self.sickness_code_label.place(x=10, y=10)
+        self.cell_label = Label(window, text="Enter cellphone number")
+        self.cell_label.place(x=10, y=10)
         self.cell_entry = Entry(window)
         self.cell_entry.place(x=200, y=10)
 
