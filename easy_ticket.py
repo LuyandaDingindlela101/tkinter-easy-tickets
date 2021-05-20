@@ -12,11 +12,10 @@ class TicketSales:
     #   CREATE A VARIABLE THAT'S GONNA CONTAIN THE result_string
     result_string = StringVar()
 
-    #
     def __init__(self, window):
         #   CREATE ALL THE NECESSARY WIDGETS
-        self.cell_label = Label(window, text="Enter cellphone number")
-        self.cell_label.place(x=10, y=10)
+        self.sickness_code_label = Label(window, text="Enter cellphone number")
+        self.sickness_code_label.place(x=10, y=10)
         self.cell_entry = Entry(window)
         self.cell_entry.place(x=200, y=10)
 
@@ -49,27 +48,22 @@ class TicketSales:
             ticket_price = 40.00
         elif ticket_category.lower() == "movie":
             ticket_price = 75.00
-        elif ticket_category.lower() == "theatre":
-            ticket_price = 100.00
         else:
-            #   THIS IS ONLY TRIGGERED IF THE ticket_category IS EMPTY OR THE STRING INSIDE DOESNT MATCH THE OPTIONS
-            messagebox.showinfo(message="You have chosen an invalid category, please clear entries and try again.")
+            ticket_price = 100.00
 
-        #   WE CHECK IF THE ticket_price EXISTS, SO WE DON'T CONTINUE WITH THE CALCULATION IF IT DOESN'T
-        if ticket_price > 0:
-            #   HERE, WE CALCULATE THE amount_payable BEFORE VAT
-            amount_payable = float(ticket_amount) * ticket_price
-            #   NOW, WE CALCULATE THE VALUE OF THE VAT
-            vat = amount_payable * 0.15
-            #   NOW, WE ADD THE TWO TOGETHER
-            amount_payable = amount_payable + vat
+        #   HERE, WE CALCULATE THE amount_payable BEFORE VAT
+        amount_payable = float(ticket_amount) * ticket_price
+        #   NOW, WE CALCULATE THE VALUE OF THE VAT
+        vat = amount_payable * 0.15
+        #   NOW, WE ADD THE TWO TOGETHER
+        amount_payable = amount_payable + vat
 
-            #   SHOW THE USER THE DETAILS OF THE TRANSACTION
-            self.result_string.set("*************************************" + "\n" +
-                                   "Amount Payable: R" + str(amount_payable) + "\n" +
-                                   "Reservation for: " + str(ticket_category) + " for: " + str(ticket_amount) + " people" + "\n" +
-                                   "was done by: " + str(cell_number) + "\n" +
-                                   "*************************************")
+        #   SHOW THE USER THE DETAILS OF THE TRANSACTION
+        self.result_string.set("*************************************" + "\n" +
+                               "Amount Payable: R" + str(amount_payable) + "\n" +
+                               "Reservation for: " + str(ticket_category) + " for: " + str(ticket_amount) + " people" + "\n" +
+                               "was done by: " + str(cell_number) + "\n" +
+                               "*************************************")
 
     #   FUNCTION CLEARS ALL THE ENTRIES CONTENTS
     def clear_entries(self):
