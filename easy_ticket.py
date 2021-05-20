@@ -67,9 +67,13 @@ class TicketSales:
 
     #   FUNCTION CLEARS ALL THE ENTRIES CONTENTS
     def clear_entries(self):
+        #   CHANGE THE STATE OF THE category_combobox TO normal, SO WE CAN DELETE THE CONTENTS
+        self.category_combobox.config(state="normal")
         self.cell_entry.delete(0, END)
         self.ticket_amount_entry.delete(0, END)
         self.category_combobox.delete(0, END)
+        #   SET THE STATE BACK TO readonly
+        self.category_combobox.config(state="readonly")
 
 
 #   START EVERYTHING UP BY MAKING AN INSTANCE OF THE TicketSales CLASS AND PASSING IN THE TKINTER window OBJECT
